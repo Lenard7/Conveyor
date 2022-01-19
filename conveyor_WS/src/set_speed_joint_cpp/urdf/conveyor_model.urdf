@@ -3,6 +3,9 @@
     
     <!-- first link -->
     <link_name="link_chasis">
+        <gazebo>
+            <static>true</static>
+        </gazebo>
         <pose>0 0 0.1 0 0 0</pose>
         <inertial>
             <mass value="15"/>
