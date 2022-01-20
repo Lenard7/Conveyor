@@ -27,5 +27,7 @@ catkin_package(
     gazebo_ros 
 )
 
+install(DIRECTORY config launch meshes urdf
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 

@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+
+<robot name="conveyor_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+    <!--<link name="world"></link> -->
+        <!-- 1st link -->
+        <link name='conveyor_frame'>
+           <gazebo>
+                <static>true</static>
+            </gazebo>
+        
+            <pose>0 0 0.1 0 0 0</pose>
+            <inertial>
+                <mass value="100"/>
+                <origin rpy="0 0 0" xyz="0 0 0.1"/>
+                <inertia 
+                    ixx = "1000" ixy = "0.00" ixz = "0.00" 
+                    iyx = "0.00" iyy = "1000" iyz = "0.00" 
+                    izx = "0.00" izy = "0.00" izz = "1000"/> <!-- High values of ixx, iyy and izz. Conveyor frame must not rotate. S
+                                                                Same arguments for mass.-->
+            </inertial>
+            <collision name="collision_conveyor_frame">
+                <geometry>
+                    <mesh filename="package://conveyor_plugin/models/conveyor/meshes/conveyer.stl" scale="1 1 1"/>
+                </geometry>
+            </collision>
+            <visual>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+                <geometry>
+                    <mesh filename="package://conveyor_plugin/models/conveyor/meshes/conveyer.stl" scale="1 1 1"/>
+                    <!-- package://<packagename>/<path> -->
+                </geometry>
+            </visual>
+        </link>
+
+        <!-- 1st joint-->
+        <joint name = "joint1" type = "continuous">
+            <origin xyz = "0.6 0 0.8" rpy = "0 0 0"/> <!-- TODO add values-->
+            <parent link = "conveyor_frame"/>
+            <child link = "roller_0"/>
+        </joint>
+
+        <!-- second link -->
+        <link name="roller_0">
+            <pose>0 0 0.1 0 0 0</pose> <!-- TODO add values-->
+            <inertial>
+                <mass value="0.25"/>
+                <origin rpy="0 0 0" xyz="0 0 0.1"/> <!-- TODO add values-->
+                <inertia 
+                    ixx = "0.02087" ixy = "0.00000" ixz = "0.00000" 
+                    iyx = "0.00000" iyy = "0.02087" iyz = "0.00000" 
+                    izx = "0.00000" izy = "0.00000" izz = "0.02087"/>
+            </inertial>
+            <collision name="collision_roller_0">
+                <geometry>
+                    <mesh filename="package://conveyor_plugin/models/conveyor/meshes/roller.stl" scale="1 1 1"/>
+                </geometry>
+            </collision>
+
+            <visual>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+                <geometry>
+                    <mesh filename="package://conveyor_plugin/models/conveyor/meshes/roller.stl" scale="1 1 1"/>
+                </geometry>
+            </visual>
+        </link>
+</robot>
