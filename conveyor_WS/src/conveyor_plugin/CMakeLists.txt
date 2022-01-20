@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(set_speed_joint_cpp)
+project(conveyor_plugin)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -17,8 +17,8 @@ link_directories(${GAZEBO_LIBRARY_DIRS})
 include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
 
 # For set_speed_joint_plugin plugin
-add_library(set_speed_joint_plugin src/set_speed_joint_plugin.cpp)
-target_link_libraries(set_speed_joint_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+#add_library(set_speed_joint_plugin src/set_speed_joint_plugin.cpp)
+#target_link_libraries(set_speed_joint_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
 
 catkin_package(
